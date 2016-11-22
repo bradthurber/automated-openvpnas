@@ -64,9 +64,9 @@
     "Mappings" : {
     
           "OpenVPNASRegionMap" : {
-              "us-east-1"     : { "AMI" : "ami-db5269b1" },
-              "us-west-1"     : { "AMI" : "ami-21166541" },
-              "us-west-2"     : { "AMI" : "ami-4e57bb2e" },
+		      	  "us-east-1"     : { "AMI" : "ami-44aaf953" },
+              "us-west-1"     : { "AMI" : "ami-fa105b9a" },
+              "us-west-2"     : { "AMI" : "ami-e8d67288" },
               "eu-west-1"     : { "AMI" : "ami-75833a06" },
               "eu-central-1"  : { "AMI" : "ami-33896d5c" },
               "ap-northeast-1": { "AMI" : "ami-9b414ef5" },
@@ -145,6 +145,7 @@
                             "/usr/local/openvpn_as/scripts/sacli --key vpn.client.tls_version_min --value 1.2 ConfigPut\n",
                             "/usr/local/openvpn_as/scripts/sacli --key vpn.client.tls_version_min_strict --value true ConfigPut\n",
                             "/usr/local/openvpn_as/scripts/sacli --key vpn.server.tls_version_min --value 1.2 ConfigPut\n",
+                            "/usr/local/openvpn_as/scripts/sacli --key vpn.server.google_auth.enable --value true ConfigPut\n",
                             "/usr/local/openvpn_as/scripts/sacli start\n",
                             "/usr/local/openvpn_as/scripts/sacli --user router --key prop_autologin --value true UserPropPut\n",
                             "/usr/local/openvpn_as/scripts/sacli --user router GetAutologin >/home/openvpnas/routerconfig.ovpn\n",
