@@ -14,7 +14,7 @@
 	    
 	  "OpenVPNVPC": {
               "Description" : "The VPC you wish to create the OpenVPN server in",
-              "Type": "AWS::EC2::VPC",
+              "Type": "AWS::EC2::VPC::Id",
               "ConstraintDescription" : "Must be a valid VPC"  
 	  },
 	   
