@@ -147,7 +147,7 @@
                       "KeyName" : { "Ref" : "KeyPairName" },
                       "SourceDestCheck" : "false",
                       "ImageId" : { "Fn::FindInMap" : [ "OpenVPNASRegionMap", { "Ref" : "AWS::Region" }, "AMI" ]},
-                      "SecurityGroups" : [{ "Ref" : "OpenVPNASAdminSG" },{"Fn::If" : ["CreateMobileSG", {"Ref" : "OpenVPNASMobileSG"},{ "Ref" : "OpenVPNASAdminSG" }]}],
+                      "SecurityGroupIds" : [{ "Ref" : "OpenVPNASAdminSG" },{"Fn::If" : ["CreateMobileSG", {"Ref" : "OpenVPNASMobileSG"},{ "Ref" : "OpenVPNASAdminSG" }]}],
                       "Tags" : [{ "Key" : "Name", "Value" : "OpenVPN Access Server" }],
                       "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
                             "#!/bin/bash\n",
