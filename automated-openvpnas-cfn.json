@@ -11,6 +11,12 @@
               "Default" : "yourkeypair",
               "ConstraintDescription" : "Must be a valid EC2 KeyPair"
           },
+	    
+	  "OpenVPNVPC": {
+              "Description" : "The VPC you wish to create the OpenVPN server in",
+              "Type": "AWS::EC2::VPC",
+              "ConstraintDescription" : "Must be a valid VPC"  
+	  },
 	   
 	  "InstanceSubnet": {
               "Description" : "The subnet you wish to create the OpenVPN server in - this must be a public subnet",
@@ -86,6 +92,7 @@
               "Type" : "AWS::EC2::SecurityGroup",
               "Properties" : {
                   "GroupDescription" : "OpenVPN AS Administrator Access.",
+                  "VpcId" : {"Ref" : "OpenVPNVPC"},
                   "SecurityGroupIngress" : [{
                       "IpProtocol" : "tcp",
                       "FromPort" : "22",
@@ -111,6 +118,7 @@
               "Condition" : "CreateMobileSG",
               "Properties" : {
                   "GroupDescription" : "OpenVPN AS Mobile access. Only use if necessary since open to the world. (i.e. 0.0.0.0/0)",
+                  "VpcId" : {"Ref" : "OpenVPNVPC"},
                   "SecurityGroupIngress" : [{
                       "IpProtocol" : "udp",
                       "FromPort" : "1194",
