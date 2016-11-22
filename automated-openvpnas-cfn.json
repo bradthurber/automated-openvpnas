@@ -11,6 +11,12 @@
               "Default" : "yourkeypair",
               "ConstraintDescription" : "Must be a valid EC2 KeyPair"
           },
+	   
+	  "InstanceSubnet": {
+              "Description" : "The subnet you wish to create the OpenVPN server in - this must be a public subnet",
+              "Type": "AWS::EC2::Subnet::Id",
+              "ConstraintDescription" : "Must be a valid Subnet"  
+	  },
 
           "MobileUse" : {
               "Description" : "Will you need mobile OpenVPN?",
@@ -129,6 +135,7 @@
                 "Properties" : {
                       "InstanceType" : {"Ref": "OpenVPNASInstanceType"},
                       "IamInstanceProfile" : { "Ref" : "OpenVPNASProfile" },
+                      "SubnetId": { "Ref" : "InstanceSubnet" },			
                       "KeyName" : { "Ref" : "KeyPairName" },
                       "SourceDestCheck" : "false",
                       "ImageId" : { "Fn::FindInMap" : [ "OpenVPNASRegionMap", { "Ref" : "AWS::Region" }, "AMI" ]},
